@@ -28,20 +28,28 @@ render()
 }
 function render(){
   updateBoard()
-  
+  updateMessage()
 }
 function updateBoard(){
   board.forEach(function(value, idx) {
     square = squareEls.children[idx]
     if (board[idx] === null){
-      square.innerHTML = "null"
+      square.innerText = "null"
     }
     else if (board[idx] === 1){
-      square.innerHTML = "1"
+      square.innerText = "1"
     }
     else if (board[idx] === -1){
-      square.innerHTML = "-1"
+      square.innerText = "-1"
     }
     })
 };
-
+function updateMessage(){
+  if (winner === false && tie === false){
+    messageEl.innerText = `It is player ${turn}'s turn`
+  } else if (winner === false && tie === true){
+    messageEl.innerText = "It's a tie!"
+  } else {
+    messageEl.innerText = `Congrats player whatever!`
+  }
+}
