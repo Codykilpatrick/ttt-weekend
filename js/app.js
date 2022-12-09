@@ -23,7 +23,7 @@ squareEls.forEach(function (el) {
 /*-------------------------------- Functions --------------------------------*/
 function init(evt){
 console.log("We loaded!");
-board = [1, null, null, null, null, null, null, null, null]
+board = [null, null, null, null, null, null, null, null, null]
 turn = 1
 winner = false
 tie = false
@@ -64,4 +64,7 @@ function handleClick(evt){
   if (winner === true){
     return
   } 
+}
+function placePiece(idx){
+  board[idx] = turn
 }
