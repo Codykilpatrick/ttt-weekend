@@ -1,10 +1,10 @@
 /*-------------------------------- Constants --------------------------------*/
-winningCombos = [[sq0, sq1, sq2], [sq3, sq4, sq5], [sq6, sq7, sq8], [sq0, sq3, sq6],
-                  [sq1, sq4, sq7], [sq2, sq5, sq8], [sq0, sq4, sq8], [sq2, sq4, sq6]]
+winningCombos = [['0', '1', '2'], ['3', '4', '5'], ['6', '7', '8'], ['0', '3', '6'],
+                  ['1', '4', '7'], ['2', '5', '8'], ['0', '4', '8'], ['2', '4', '6']]
+
 
 /*---------------------------- Variables (state) ----------------------------*/
-let board, turn, winner, tie, player
-
+let board, turn, winner, tie, player, playerOneScore, playerTwoScore
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -24,11 +24,15 @@ resetBtnEl.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 function init(evt){
-board = [null, null, null, null, null, null, null, null, null]
+board = [null, null, null, 
+        null, null, null, 
+        null, null, null]
 turn = 1
 winner = false
 tie = false
 player = ""
+playerOneScore = []
+playerTwoScore = []
 render()
 }
 function render(evt){
@@ -74,7 +78,7 @@ function handleClick(evt){
   }
   placePiece(sqIdx)
   checkForTie()
-  checkForWinner()
+  checkForWinner(sqIdx)
   switchPlayerTurn()
   render()
 }
@@ -88,39 +92,54 @@ function checkForTie(){
     tie = true
   }
 }
-function checkForWinner(){
-  if (board[0] === 1 && board[1] === 1 && board[2] === 1){
-    winner = true
-  }if (board[0] === -1 && board[1] === -1 && board[2] === -1){
-    winner = true
-  }if (board[3] === 1 && board[4] === 1 && board[5] === 1){
-    winner = true
-  }if (board[3] === -1 && board[4] === -1 && board[5] === -1){
-    winner = true
-  }if (board[6] === 1 && board[7] === 1 && board[8] === 1){
-    winner = true
-  }if (board[6] === -1 && board[7] === -1 && board[8] === -1){
-    winner = true
-  }if (board[0] === 1 && board[3] === 1 && board[6] === 1){
-    winner = true
-  }if (board[0] === -1 && board[3] === -1 && board[6] === -1){
-    winner = true
-  }if (board[1] === 1 && board[4] === 1 && board[7] === 1){
-    winner = true
-  }if (board[1] === -1 && board[4] === -1 && board[7] === -1){
-    winner = true
-  }if (board[2] === 1 && board[5] === 1 && board[8] === 1){
-    winner = true
-  }if (board[2] === -1 && board[5] === -1 && board[8] === -1){
-    winner = true
-  }if (board[0] === 1 && board[4] === 1 && board[8] === 1){
-    winner = true
-  }if (board[0] === -1 && board[4] === -1 && board[8] === -1){
-    winner = true
-  }if (board[2] === 1 && board[4] === 1 && board[6] === 1){
-    winner = true
-  }if (board[2] === -1 && board[4] === -1 && board[6] === -1){
-    winner = true
+// function checkForWinner(){
+//   if (board[0] === 1 && board[1] === 1 && board[2] === 1){
+//     winner = true
+//   }if (board[0] === -1 && board[1] === -1 && board[2] === -1){
+//     winner = true
+//   }if (board[3] === 1 && board[4] === 1 && board[5] === 1){
+//     winner = true
+//   }if (board[3] === -1 && board[4] === -1 && board[5] === -1){
+//     winner = true
+//   }if (board[6] === 1 && board[7] === 1 && board[8] === 1){
+//     winner = true
+//   }if (board[6] === -1 && board[7] === -1 && board[8] === -1){
+//     winner = true
+//   }if (board[0] === 1 && board[3] === 1 && board[6] === 1){
+//     winner = true
+//   }if (board[0] === -1 && board[3] === -1 && board[6] === -1){
+//     winner = true
+//   }if (board[1] === 1 && board[4] === 1 && board[7] === 1){
+//     winner = true
+//   }if (board[1] === -1 && board[4] === -1 && board[7] === -1){
+//     winner = true
+//   }if (board[2] === 1 && board[5] === 1 && board[8] === 1){
+//     winner = true
+//   }if (board[2] === -1 && board[5] === -1 && board[8] === -1){
+//     winner = true
+//   }if (board[0] === 1 && board[4] === 1 && board[8] === 1){
+//     winner = true
+//   }if (board[0] === -1 && board[4] === -1 && board[8] === -1){
+//     winner = true
+//   }if (board[2] === 1 && board[4] === 1 && board[6] === 1){
+//     winner = true
+//   }if (board[2] === -1 && board[4] === -1 && board[6] === -1){
+//     winner = true
+//   }
+// }
+
+function checkForWinner(sqIdx){
+  if (turn === 1){
+    playerOneScore.push(sqIdx)
+  } else {
+    playerTwoScore.push(sqIdx)
+  }
+  for (let i = 0; i < winningCombos.length; i++){
+    if (playerOneScore.toString() === winningCombos[i].toString()){
+      winner = true
+    } else if (playerTwoScore.toString() === winningCombos[i].toString()){
+      winner = true
+    }
   }
 }
 function switchPlayerTurn(){
