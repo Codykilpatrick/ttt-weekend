@@ -29,10 +29,9 @@ winner = false
 tie = false
 render()
 }
-function render(){
+function render(evt){
   updateBoard()
   updateMessage()
-  handleClick()
 }
 function updateBoard(){
   board.forEach(function(value, idx) {
@@ -58,5 +57,15 @@ function updateMessage(){
   }
 }
 function handleClick(evt){
-  console.log('hello');
+  const sqIdx = evt.target.id;
+  board.forEach(function(value, idx) {
+    square = squareEls[idx]
+    if (square === "1" || square === "-1"){
+      console.log(sqIdx);
+      return
+    }
+    if (winner === true){
+      return
+    } 
+  })
 }
