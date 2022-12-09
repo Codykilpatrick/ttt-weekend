@@ -9,14 +9,16 @@ let board, turn, winner, tie
 
 /*------------------------ Cached Element References ------------------------*/
 //* Plan A
-const squareEls = document.querySelector(".board")
+const squareEls = document.querySelectorAll(".sqr")
 const messageEl = document.getElementById("message")
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 document.addEventListener('DOMContentLoaded', init)
-
+squareEls.forEach(function (el) {
+  el.addEventListener('click', handleClick)
+})
 
 /*-------------------------------- Functions --------------------------------*/
 function init(evt){
@@ -30,10 +32,11 @@ render()
 function render(){
   updateBoard()
   updateMessage()
+  handleClick()
 }
 function updateBoard(){
   board.forEach(function(value, idx) {
-    square = squareEls.children[idx]
+    square = squareEls[idx]
     if (board[idx] === null){
       square.innerText = "null"
     }
@@ -53,4 +56,7 @@ function updateMessage(){
   } else {
     messageEl.innerText = `Congrats player whatever!`
   }
+}
+function handleClick(evt){
+  console.log('hello');
 }
