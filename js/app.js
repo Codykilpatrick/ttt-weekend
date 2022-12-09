@@ -23,7 +23,7 @@ squareEls.forEach(function (el) {
 /*-------------------------------- Functions --------------------------------*/
 function init(evt){
 console.log("We loaded!");
-board = [null, null, null, null, null, null, null, null, null]
+board = [1, null, null, null, null, null, null, null, null]
 turn = 1
 winner = false
 tie = false
@@ -57,15 +57,11 @@ function updateMessage(){
   }
 }
 function handleClick(evt){
-  const sqIdx = evt.target.id;
-  board.forEach(function(value, idx) {
-    square = squareEls[idx]
-    if (square === "1" || square === "-1"){
-      console.log(sqIdx);
-      return
-    }
-    if (winner === true){
-      return
-    } 
-  })
+  const sqIdx = evt.target;
+  if (sqIdx.innerText === "1" || sqIdx.innerText === "-1"){
+    return
+  }
+  if (winner === true){
+    return
+  } 
 }
