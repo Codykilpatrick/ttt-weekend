@@ -63,7 +63,10 @@ function handleClick(evt){
   }
   if (winner === true){
     return
-  } 
+  }
+  placePiece()
+  checkForTie()
+  checkForWinner()
 }
 function placePiece(idx){
   board[idx] = turn
@@ -75,3 +78,40 @@ function checkForTie(){
     tie = true
   }
 }
+function checkForWinner(){
+  if (board[0] === 1 && board[1] === 1 && board[2] === 1){
+    winner = true
+  }if (board[0] === -1 && board[1] === -1 && board[2] === -1){
+    winner = true
+  }if (board[3] === 1 && board[4] === 1 && board[5] === 1){
+    winner = true
+  }if (board[3] === -1 && board[4] === -1 && board[5] === -1){
+    winner = true
+  }if (board[6] === 1 && board[7] === 1 && board[8] === 1){
+    winner = true
+  }if (board[6] === -1 && board[7] === -1 && board[8] === -1){
+    winner = true
+  }if (board[0] === 1 && board[3] === 1 && board[6] === 1){
+    winner = true
+  }if (board[0] === -1 && board[3] === -1 && board[6] === -1){
+    winner = true
+  }if (board[1] === 1 && board[4] === 1 && board[7] === 1){
+    winner = true
+  }if (board[1] === -1 && board[4] === -1 && board[7] === -1){
+    winner = true
+  }if (board[2] === 1 && board[5] === 1 && board[8] === 1){
+    winner = true
+  }if (board[2] === -1 && board[5] === -1 && board[8] === -1){
+    winner = true
+  }if (board[0] === 1 && board[4] === 1 && board[8] === 1){
+    winner = true
+  }if (board[0] === -1 && board[4] === -1 && board[8] === -1){
+    winner = true
+  }if (board[2] === 1 && board[4] === 1 && board[6] === 1){
+    winner = true
+  }if (board[2] === -1 && board[4] === -1 && board[6] === -1){
+    winner = true
+  }
+}
+// winningCombos = [[sq0, sq1, sq2], [sq3, sq4, sq5], [sq6, sq7, sq8], [sq0, sq3, sq6],
+// [sq1, sq4, sq7], [sq2, sq5, sq8], [sq0, sq4, sq8], [sq2, sq4, sq6]]
