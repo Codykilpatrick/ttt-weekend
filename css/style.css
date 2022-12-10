@@ -1,5 +1,5 @@
 body {
-    background-color: gray;
+    background-color: black;
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -7,6 +7,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  color: white;
 }
 
 section.board {
@@ -14,11 +16,20 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  color: #FF10F0;
+  margin: auto;
 }
 
 div {
-  border: 3px solid black;
+  border: 3px solid blue;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+}
+.btn {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  background-color: black;
+  border: 3px greenyellow solid;
 }
