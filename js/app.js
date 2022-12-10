@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 winningCombos = [['0', '1', '2'], ['3', '4', '5'], ['6', '7', '8'], ['0', '3', '6'],
-                  ['1', '4', '7'], ['2', '5', '8'], ['0', '4', '8'], ['2', '4', '6']]
+                  ['1', '4', '7'], ['2', '5', '8'], ['0', '4', '8'], ['2', '4', '6',]]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -141,6 +141,67 @@ function checkForWinner(sqIdx){
       winner = true
     }
   }
+  //If player one wins on their 4th turn with the third move being obsolete
+  if (playerOneScore.length == 4 ){
+    playerOneScoreSlicedPartOne = playerOneScore.slice(0, 2)
+    playerOneScoreSlicedPartTwo = playerOneScore.slice(3, 4)
+    playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+    //If player two wins on their 4th turn with the third move being obsolete
+  if (playerTwoScore.length == 4 ){
+    playerTwoScoreSlicedPartOne = playerTwoScore.slice(0, 2)
+    playerTwoScoreSlicedPartTwo = playerTwoScore.slice(3, 4)
+    playerTwoScoreFinal = playerTwoScoreSlicedPartOne.concat(playerTwoScoreSlicedPartTwo)
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerTwoScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      }
+    }
+  }
+  //If player one wins on their 4th turn with the first move being obselete
+  if (playerOneScore.length == 4 ){
+    playerOneScoreFinal = playerOneScore.slice(1, 4)
+    playerOneScoreFinal.sort()
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+    //If Player two wins on their 4th turn with their fist move being obselete
+  if (playerTwoScore.length == 4 ){
+    playerTwoScoreFinal = playerTwoScore.slice(1, 4)
+    playerTwoScoreFinal.sort()
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerTwoScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+  //If player one wins on the 5th turn with their first move being obselete
+  if (playerOneScore.length == 5 ){
+    playerOneScoreSlicedPartOne = playerOneScore.slice(1, 3)
+    playerOneScoreSlicedPartTwo = playerOneScore.slice(4, 5)
+    playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+  //If player one wins on the 5th turn and their 2nd and 4th moves are obselete
+  if (playerOneScore.length == 5 ){
+    playerOneScoreSlicedPartOne = playerOneScore.slice(0, 1)
+    playerOneScoreSlicedPartTwo = playerOneScore.slice(2, 3)
+    playeroneScoreSlicedPartThree = playerOneScore.slice(-1)
+    playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo).concat(playeroneScoreSlicedPartThree)
+    playerOneScoreFinal.sort()
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
 }
 function switchPlayerTurn(){
   if (winner === true){
