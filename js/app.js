@@ -134,6 +134,7 @@ function checkForWinner(sqIdx){
   } else {
     playerTwoScore.push(sqIdx)
   }
+  console.log(playerOneScore);
   for (let i = 0; i < winningCombos.length; i++){
     if (playerOneScore.toString() === winningCombos[i].toString()){
       winner = true
@@ -196,6 +197,17 @@ function checkForWinner(sqIdx){
     playerOneScoreSlicedPartTwo = playerOneScore.slice(2, 3)
     playeroneScoreSlicedPartThree = playerOneScore.slice(-1)
     playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo).concat(playeroneScoreSlicedPartThree)
+    playerOneScoreFinal.sort()
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+  // if player one wins on the 5th turn and their 3rd and 4th turns are obselete
+  if (playerOneScore.length == 5 ){
+    playerOneScoreSlicedPartOne = playerOneScore.slice(0, 2)
+    playerOneScoreSlicedPartTwo = playerOneScore.slice(-1)
+    playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
     playerOneScoreFinal.sort()
     for (let i = 0; i < winningCombos.length; i++){
       if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
