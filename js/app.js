@@ -136,9 +136,9 @@ function checkForWinner(sqIdx){
   }
   console.log(playerOneScore);
   for (let i = 0; i < winningCombos.length; i++){
-    if (playerOneScore.toString() === winningCombos[i].toString()){
+    if (playerOneScore.sort().toString() === winningCombos[i].toString()){
       winner = true
-    } else if (playerTwoScore.toString() === winningCombos[i].toString()){
+    } else if (playerTwoScore.sort().toString() === winningCombos[i].toString()){
       winner = true
     }
   }
@@ -147,6 +147,7 @@ function checkForWinner(sqIdx){
     playerOneScoreSlicedPartOne = playerOneScore.slice(0, 2)
     playerOneScoreSlicedPartTwo = playerOneScore.slice(3, 4)
     playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
+    playerOneScoreFinal.sort()
     for (let i = 0; i < winningCombos.length; i++){
       if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
         winner = true
@@ -157,6 +158,7 @@ function checkForWinner(sqIdx){
     playerTwoScoreSlicedPartOne = playerTwoScore.slice(0, 2)
     playerTwoScoreSlicedPartTwo = playerTwoScore.slice(3, 4)
     playerTwoScoreFinal = playerTwoScoreSlicedPartOne.concat(playerTwoScoreSlicedPartTwo)
+    playerTwoScoreFinal.sort()
     for (let i = 0; i < winningCombos.length; i++){
       if (playerTwoScoreFinal.toString() === winningCombos[i].toString()){
         winner = true
@@ -186,6 +188,7 @@ function checkForWinner(sqIdx){
     playerOneScoreSlicedPartOne = playerOneScore.slice(1, 3)
     playerOneScoreSlicedPartTwo = playerOneScore.slice(4, 5)
     playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
+    playerOneScoreFinal.sort()
     for (let i = 0; i < winningCombos.length; i++){
       if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
         winner = true
@@ -207,6 +210,19 @@ function checkForWinner(sqIdx){
   if (playerOneScore.length == 5 ){
     playerOneScoreSlicedPartOne = playerOneScore.slice(0, 2)
     playerOneScoreSlicedPartTwo = playerOneScore.slice(-1)
+    playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
+    playerOneScoreFinal.sort()
+    for (let i = 0; i < winningCombos.length; i++){
+      if (playerOneScoreFinal.toString() === winningCombos[i].toString()){
+        winner = true
+      } 
+    }}
+  // if player one wins on the 5th turn and their 2nd and 3rd turns are obselete
+  if (playerOneScore.length == 5 ){
+    playerOneScoreSlicedPartOne = playerOneScore.slice(0, 1)
+    console.log(playerOneScoreSlicedPartOne);
+    playerOneScoreSlicedPartTwo = playerOneScore.slice(-2)
+    console.log(playerOneScoreSlicedPartTwo);
     playerOneScoreFinal = playerOneScoreSlicedPartOne.concat(playerOneScoreSlicedPartTwo)
     playerOneScoreFinal.sort()
     for (let i = 0; i < winningCombos.length; i++){
