@@ -92,42 +92,6 @@ function checkForTie(){
     tie = true
   }
 }
-// function checkForWinner(){
-//   if (board[0] === 1 && board[1] === 1 && board[2] === 1){
-//     winner = true
-//   }if (board[0] === -1 && board[1] === -1 && board[2] === -1){
-//     winner = true
-//   }if (board[3] === 1 && board[4] === 1 && board[5] === 1){
-//     winner = true
-//   }if (board[3] === -1 && board[4] === -1 && board[5] === -1){
-//     winner = true
-//   }if (board[6] === 1 && board[7] === 1 && board[8] === 1){
-//     winner = true
-//   }if (board[6] === -1 && board[7] === -1 && board[8] === -1){
-//     winner = true
-//   }if (board[0] === 1 && board[3] === 1 && board[6] === 1){
-//     winner = true
-//   }if (board[0] === -1 && board[3] === -1 && board[6] === -1){
-//     winner = true
-//   }if (board[1] === 1 && board[4] === 1 && board[7] === 1){
-//     winner = true
-//   }if (board[1] === -1 && board[4] === -1 && board[7] === -1){
-//     winner = true
-//   }if (board[2] === 1 && board[5] === 1 && board[8] === 1){
-//     winner = true
-//   }if (board[2] === -1 && board[5] === -1 && board[8] === -1){
-//     winner = true
-//   }if (board[0] === 1 && board[4] === 1 && board[8] === 1){
-//     winner = true
-//   }if (board[0] === -1 && board[4] === -1 && board[8] === -1){
-//     winner = true
-//   }if (board[2] === 1 && board[4] === 1 && board[6] === 1){
-//     winner = true
-//   }if (board[2] === -1 && board[4] === -1 && board[6] === -1){
-//     winner = true
-//   }
-// }
-
 function checkForWinner(sqIdx){
   if (turn === 1){
     playerOneScore.push(sqIdx)
